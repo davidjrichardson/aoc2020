@@ -10,6 +10,13 @@ pub struct Day2<'a> {
     pub(crate) part_2_ans: Option<usize>,
 }
 
+fn validate_passwords(
+    passwords: &Vec<(Range<usize>, String, String)>,
+    filter_fn: fn(&(Range<usize>, String, String)) -> bool,
+) -> usize {
+    passwords.iter().filter(|t| (filter_fn)(t)).count()
+}
+
 impl Challenge<'_> for Day2<'_> {
     fn setup(&mut self) {
         self.data = Some(
@@ -44,32 +51,24 @@ impl Challenge<'_> for Day2<'_> {
     }
 
     fn part_1(&mut self) {
-        self.part_1_ans = Some(
-            self.data
-                .as_ref()
-                .unwrap()
-                .iter()
-                .filter(|(r, c, p)| {
-                    let matches: Vec<_> = p.matches(c).collect();
+        self.part_1_ans = Some(validate_passwords(
+            self.data.as_ref().unwrap(),
+            |(r, c, p)| {
+                let matches: Vec<_> = p.matches(c).collect();
 
-                    r.contains(&matches.len())
-                })
-                .count(),
-        );
+                r.contains(&matches.len())
+            },
+        ));
     }
 
     fn part_2(&mut self) {
-        self.part_2_ans = Some(
-            self.data
-                .as_ref()
-                .unwrap()
-                .iter()
-                .filter(|(r, c, p)| {
-                    (p.get((r.start - 1)..(r.start)).unwrap() == c)
-                        ^ (p.get((r.end - 2)..(r.end - 1)).unwrap() == c)
-                })
-                .count(),
-        );
+        self.part_2_ans = Some(validate_passwords(
+            self.data.as_ref().unwrap(),
+            |(r, c, p)| {
+                (p.get((r.start - 1)..(r.start)).unwrap() == c)
+                    ^ (p.get((r.end - 2)..(r.end - 1)).unwrap() == c)
+            },
+        ));
     }
 
     fn format_answers(&self) -> String {
