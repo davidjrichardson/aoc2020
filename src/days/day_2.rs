@@ -35,9 +35,9 @@ pub struct Day2<'a> {
 }
 fn validate_passwords(
     passwords: &Vec<PasswordDetails>,
-    filter_fn: fn(&PasswordDetails) -> bool,
+    filter_fn: impl Fn(&PasswordDetails) -> bool,
 ) -> usize {
-    passwords.iter().filter(|t| (filter_fn)(t)).count()
+    passwords.iter().filter(|t| filter_fn(t)).count()
 }
 
 impl Challenge<'_> for Day2<'_> {
