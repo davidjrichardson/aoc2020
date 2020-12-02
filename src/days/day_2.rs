@@ -54,11 +54,7 @@ impl Challenge<'_> for Day2<'_> {
     fn part_1(&mut self) {
         self.part_1_ans = Some(validate_passwords(
             self.data.as_ref().unwrap(),
-            |PasswordDetails(r, c, p)| {
-                let matches: Vec<_> = p.matches(c).collect();
-
-                r.contains(&matches.len())
-            },
+            |PasswordDetails(r, c, p)| r.contains(&p.matches(c).collect::<Vec<_>>().len()),
         ));
     }
 
