@@ -2,9 +2,11 @@ use std::path::Path;
 
 use day_1::Day1;
 use day_2::Day2;
+use day_3::Day3;
 
 pub mod day_1;
 pub mod day_2;
+pub mod day_3;
 
 pub trait Challenge<'a> {
     fn setup(&mut self);
@@ -30,6 +32,12 @@ pub fn challenge_from_day<'a>(
             part_1_ans: None,
             part_2_ans: None,
         })),
-        _ => Err("".to_string()),
+        3 => Ok(Box::new(Day3 {
+            data: None,
+            file_path: file_path,
+            part_1_ans: None,
+            part_2_ans: None,
+        })),
+        _ => Err(format!("Day {} is not implemented", day)),
     }
 }
