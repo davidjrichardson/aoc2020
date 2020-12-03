@@ -12,6 +12,17 @@ pub struct Day1<'a> {
     pub(crate) part_2_ans: Option<Vec<i32>>,
 }
 
+impl<'a> Day1<'_> {
+    pub fn build(file_path: &'a Path) -> Result<Day1, ()> {
+        Ok(Day1 {
+            data: None,
+            part_1_ans: None,
+            part_2_ans: None,
+            file_path: file_path
+        })
+    }
+}
+
 fn get_combinations(nums: &Vec<i32>, size: usize) -> Vec<i32> {
     nums.iter()
         .cloned()

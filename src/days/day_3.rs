@@ -16,6 +16,17 @@ pub struct Day3<'a> {
     pub(crate) part_2_ans: Option<i64>,
 }
 
+impl<'a> Day3<'_> {
+    pub fn build(file_path: &'a Path) -> Result<Day3, ()> {
+        Ok(Day3 {
+            data: None,
+            part_1_ans: None,
+            part_2_ans: None,
+            file_path: file_path
+        })
+    }
+}
+
 #[derive(Debug)]
 pub struct SledMap {
     size: (usize, usize),
