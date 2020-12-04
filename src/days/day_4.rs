@@ -61,7 +61,7 @@ impl Height {
         match u {
             "in" => (59..77).contains(&self.size),
             "cm" => (150..194).contains(&self.size),
-            _ => false
+            _ => false,
         }
     }
 }
@@ -136,7 +136,7 @@ impl StrongPassport {
     fn from_passport(passport: &Passport) -> StrongPassport {
         lazy_static! {
             static ref HCL_RE: Regex = Regex::new(r"(?P<val>#[0-9a-z]{6})").unwrap();
-            static ref PID_RE: Regex = Regex::new(r"(?P<val>[0-9]{9})").unwrap();
+            static ref PID_RE: Regex = Regex::new(r"^(?P<val>[0-9]{9})$").unwrap();
         }
 
         StrongPassport {
@@ -280,15 +280,7 @@ impl Challenge<'_> for Day4<'_> {
                 .as_ref()
                 .unwrap()
                 .iter()
-                .map(|p| {
-                    let foo = StrongPassport::from_passport(&p);
-
-                    if foo.is_valid() {
-                        println!("{:?}\n{:?}\n\n", p, foo);
-                    }
-
-                    foo
-                })
+                .map(|p| StrongPassport::from_passport(&p))
                 .filter(|p| p.is_valid())
                 .count(),
         );
