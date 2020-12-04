@@ -1,3 +1,4 @@
+#[macro_use] extern crate lazy_static;
 use std::path::Path;
 use std::process::exit;
 use std::time::SystemTime;
