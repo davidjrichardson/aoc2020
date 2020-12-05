@@ -72,7 +72,7 @@ fn main() {
             println!("{}", c.format_answers());
 
             println!(
-                "\nTime beakdowns:\n\nSetup: {:?}\nPart 1: {:?}\nPart 2: {:?}\nTotal: {:?}",
+                "\nTime beakdowns:\nSetup: {:?}\nPart 1: {:?}\nPart 2: {:?}\nTotal: {:?}",
                 setup_time.duration_since(start_time).unwrap(),
                 part_1_time.duration_since(setup_time).unwrap(),
                 part_2_time.duration_since(part_1_time).unwrap(),
