@@ -3,10 +3,10 @@ use itertools::Itertools;
 use std::{fs, path::Path};
 
 pub struct Day5<'a> {
-    pub(crate) data: Vec<usize>,
+    pub(crate) data: Vec<u16>,
     pub(crate) file_path: &'a Path,
-    pub(crate) part_1_ans: Option<usize>,
-    pub(crate) part_2_ans: Option<usize>,
+    pub(crate) part_1_ans: Option<u16>,
+    pub(crate) part_2_ans: Option<u16>,
 }
 
 impl<'a> Day5<'_> {
@@ -20,31 +20,21 @@ impl<'a> Day5<'_> {
     }
 }
 
-fn seat_to_id((x, y): (usize, usize)) -> usize {
-    (x * 8) + y
-}
-
 impl Challenge<'_> for Day5<'_> {
     fn setup(&mut self) {
-        let binary_str = fs::read_to_string(self.file_path)
-            .unwrap()
-            .chars()
-            .map(|c| match c {
-                'B' | 'R' => '1',
-                'F' | 'L' => '0',
-                x => x,
-            })
-            .collect::<String>();
+        let input_strs = fs::read_to_string(self.file_path).unwrap();
 
-        self.data = binary_str
+        self.data = input_strs
             .split_whitespace()
             .map(|s| {
-                (
-                    usize::from_str_radix(&s[0..7], 2).unwrap(),
-                    usize::from_str_radix(&s[7..], 2).unwrap(),
-                )
+                s.chars()
+                    .map(|c| match c {
+                        'B' | 'R' => 1u16,
+                        'F' | 'L' => 0u16,
+                        _ => unreachable!(),
+                    })
+                    .fold(0, |acc, x| (acc << 1) + x)
             })
-            .map(seat_to_id)
             .sorted()
             .collect();
     }
