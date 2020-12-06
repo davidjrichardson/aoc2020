@@ -10,8 +10,8 @@ pub struct Day5<'a> {
 }
 
 impl<'a> Day5<'_> {
-    pub fn build(file_path: &'a Path) -> Result<Day5, ()> {
-        Ok(Day5 {
+    pub fn build(file_path: &'a Path) -> Box<Day5> {
+        Box::new(Day5 {
             data: Vec::new(),
             part_1_ans: None,
             part_2_ans: None,

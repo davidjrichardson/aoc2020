@@ -13,8 +13,8 @@ pub struct Day1<'a> {
 }
 
 impl<'a> Day1<'_> {
-    pub fn build(file_path: &'a Path) -> Result<Day1, ()> {
-        Ok(Day1 {
+    pub fn build(file_path: &'a Path) -> Box<Day1> {
+        Box::new(Day1 {
             data: None,
             part_1_ans: None,
             part_2_ans: None,

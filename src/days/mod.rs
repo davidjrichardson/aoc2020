@@ -26,12 +26,12 @@ pub fn challenge_from_day<'a>(
     file_path: &'a Path,
 ) -> Result<Box<dyn Challenge<'a> + 'a>, String> {
     match day {
-        1 => Ok(Box::new(Day1::build(file_path).unwrap())),
-        2 => Ok(Box::new(Day2::build(file_path).unwrap())),
-        3 => Ok(Box::new(Day3::build(file_path).unwrap())),
-        4 => Ok(Box::new(Day4::build(file_path).unwrap())),
-        5 => Ok(Box::new(Day5::build(file_path).unwrap())),
-        6 => Ok(Box::new(Day6::build(file_path).unwrap())),
+        1 => Ok(Day1::build(file_path)),
+        2 => Ok(Day2::build(file_path)),
+        3 => Ok(Day3::build(file_path)),
+        4 => Ok(Day4::build(file_path)),
+        5 => Ok(Day5::build(file_path)),
+        6 => Ok(Day6::build(file_path)),
         _ => Err(format!("Day {} is not implemented", day)),
     }
 }
