@@ -3,10 +3,10 @@ use itertools::Itertools;
 use std::{fs, path::Path};
 
 pub struct Day5<'a> {
-    pub(crate) data: Vec<u16>,
-    pub(crate) file_path: &'a Path,
-    pub(crate) part_1_ans: Option<u16>,
-    pub(crate) part_2_ans: Option<u16>,
+    data: Vec<u16>,
+    file_path: &'a Path,
+    part_1_ans: Option<u16>,
+    part_2_ans: Option<u16>,
 }
 
 impl<'a> Day5<'_> {

@@ -4,10 +4,10 @@ use std::path::Path;
 use crate::days::Challenge;
 
 pub struct Day6<'a> {
-    pub(crate) data: Vec<Vec<u32>>,
-    pub(crate) file_path: &'a Path,
-    pub(crate) part_1_ans: Option<usize>,
-    pub(crate) part_2_ans: Option<usize>,
+    data: Vec<Vec<u32>>,
+    file_path: &'a Path,
+    part_1_ans: Option<u32>,
+    part_2_ans: Option<u32>,
 }
 
 impl<'a> Day6<'_> {
@@ -44,16 +44,11 @@ impl Challenge<'_> for Day6<'_> {
     }
 
     fn part_1(&mut self) {
-        self.part_1_ans = Some(self.data.iter().map(|g| mask_union(g) as usize).sum());
+        self.part_1_ans = Some(self.data.iter().map(|g| mask_union(g)).sum());
     }
 
     fn part_2(&mut self) {
-        self.part_2_ans = Some(
-            self.data
-                .iter()
-                .map(|g| mask_intersection(g) as usize)
-                .sum(),
-        );
+        self.part_2_ans = Some(self.data.iter().map(|g| mask_intersection(g)).sum());
     }
 
     fn format_answers(&self) -> String {

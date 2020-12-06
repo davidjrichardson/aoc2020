@@ -31,10 +31,10 @@ impl FromStr for EyeColour {
 }
 
 pub struct Day4<'a> {
-    pub(crate) data: Option<Vec<Passport>>,
-    pub(crate) file_path: &'a Path,
-    pub(crate) part_1_ans: Option<usize>,
-    pub(crate) part_2_ans: Option<usize>,
+    data: Option<Vec<Passport>>,
+    file_path: &'a Path,
+    part_1_ans: Option<usize>,
+    part_2_ans: Option<usize>,
 }
 
 impl<'a> Day4<'_> {

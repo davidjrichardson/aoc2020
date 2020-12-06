@@ -10,10 +10,10 @@ enum MapElement {
 }
 
 pub struct Day3<'a> {
-    pub(crate) data: Option<SledMap>,
-    pub(crate) file_path: &'a Path,
-    pub(crate) part_1_ans: Option<usize>,
-    pub(crate) part_2_ans: Option<i64>,
+    data: Option<SledMap>,
+    file_path: &'a Path,
+    part_1_ans: Option<usize>,
+    part_2_ans: Option<i64>,
 }
 
 impl<'a> Day3<'_> {

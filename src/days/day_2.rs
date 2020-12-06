@@ -28,10 +28,10 @@ impl FromStr for PasswordDetails {
 }
 
 pub struct Day2<'a> {
-    pub(crate) data: Option<Vec<PasswordDetails>>,
-    pub(crate) file_path: &'a Path,
-    pub(crate) part_1_ans: Option<usize>,
-    pub(crate) part_2_ans: Option<usize>,
+    data: Option<Vec<PasswordDetails>>,
+    file_path: &'a Path,
+    part_1_ans: Option<usize>,
+    part_2_ans: Option<usize>,
 }
 
 impl<'a> Day2<'_> {

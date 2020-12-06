@@ -6,10 +6,10 @@ use std::fs;
 use crate::Path;
 
 pub struct Day1<'a> {
-    pub(crate) data: Option<Vec<i32>>,
-    pub(crate) file_path: &'a Path,
-    pub(crate) part_1_ans: Option<Vec<i32>>,
-    pub(crate) part_2_ans: Option<Vec<i32>>,
+    data: Option<Vec<i32>>,
+    file_path: &'a Path,
+    part_1_ans: Option<Vec<i32>>,
+    part_2_ans: Option<Vec<i32>>,
 }
 
 impl<'a> Day1<'_> {
