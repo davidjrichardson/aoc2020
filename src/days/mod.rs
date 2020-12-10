@@ -7,6 +7,7 @@ use day_4::Day4;
 use day_5::Day5;
 use day_6::Day6;
 use day_8::Day8;
+use day_10::Day10;
 
 pub mod day_1;
 pub mod day_2;
@@ -15,6 +16,7 @@ pub mod day_4;
 pub mod day_5;
 pub mod day_6;
 pub mod day_8;
+pub mod day_10;
 
 pub trait Challenge<'a> {
     fn setup(&mut self);
@@ -35,6 +37,7 @@ pub fn challenge_from_day<'a>(
         5 => Ok(Day5::build(file_path)),
         6 => Ok(Day6::build(file_path)),
         8 => Ok(Day8::build(file_path)),
+        10 => Ok(Day10::build(file_path)),
         _ => Err(format!("Day {} is not implemented", day)),
     }
 }
